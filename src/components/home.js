@@ -38,10 +38,6 @@ function Home() {
     .then(data => {
       setPastes(data);
       setError(null);
-      if (token != '') {
-        console.log(token);
-        logInUser();
-      }
     })
     .catch(err => {
       setError(err.message);
@@ -192,7 +188,7 @@ function Home() {
       </Modal>}
 
     {newPasteModal && <Modal show="true" backdrop="static">
-      <NewPaste close={() => setNewPasteModal(null)}/>
+      <NewPaste close={() => setNewPasteModal(null)} addedSuccess={() => fetchPastes()}/>
       </Modal>}
   </>);
 }

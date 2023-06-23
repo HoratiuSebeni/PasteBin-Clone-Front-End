@@ -3,7 +3,7 @@ import { token } from './logIn';
 import serverUrl from '../index';
 import Modal from 'react-bootstrap/Modal';
 
-const NewPaste = ({close}) => {
+const NewPaste = ({close, addedSuccess}) => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [error, setError] = useState(null);
@@ -36,6 +36,7 @@ const NewPaste = ({close}) => {
         .then(data => {
             setData(data);
             setError(null);
+            addedSuccess();
             close();
         })
         .catch(err => {
